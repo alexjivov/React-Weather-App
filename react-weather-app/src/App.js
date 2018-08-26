@@ -11,13 +11,16 @@ import Form from './Components/form';
 import Weather from './Components/weather';
 
 // WEATHER API KEY //
-const API_key = "7d9bb4a9ebb655c852f28bb7d3c4081a";
+const API_key = "dac4d5073f08d31682d6c106b0690a16";
 
 
 class App extends Component {
   // Create your own method - Get Weather
   // arrow functions allow you to use 'this' key word independently (its bound to this component)
-  getWeather = async () => {
+  // e is an event object
+  getWeather = async (e) => {
+    //prevents full page refresh on click of submit button
+    e.preventDefault();
     // fetch keyword + URL you want to make API call to
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=Manchester,uk&appid=${API_key}a&units=metric`);
     //need to convert response to JSON format
@@ -29,7 +32,7 @@ class App extends Component {
     return (
       <div>
         <Titles />
-        <Form />
+        <Form getWeather={this.getWeather}/>
         <Weather />
       </div>
     );
