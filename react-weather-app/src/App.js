@@ -11,7 +11,7 @@ import Form from './Components/form';
 import Weather from './Components/weather';
 
 // WEATHER API KEY //
-const API_key = "dac4d5073f08d31682d6c106b0690a16";
+const API_key = 'f8f573c91bdd7dddc94206da5aa3a3c1';
 
 
 class App extends Component {
@@ -50,14 +50,23 @@ class App extends Component {
       description: data.weather[0].description,
       error: ''
     });
-    }
+  }
   // Render - built in method that returns JSX - JS running in background transpiled by Babel
   render() {
     return (
       <div>
         <Titles />
-        <Form getWeather={this.getWeather}/>
-        <Weather />
+        <Form getWeather={this.getWeather} />
+        <Weather 
+        // doesn't show anything if state values are 'undefined'
+        temperature={this.state.temperature}
+        city={this.state.city}
+        country={this.state.country}
+        humidity={this.state.humidity}
+        description={this.state.description}
+        error={this.state.error}
+
+        />
       </div>
     );
   }
