@@ -15,6 +15,17 @@ const API_key = "dac4d5073f08d31682d6c106b0690a16";
 
 
 class App extends Component {
+  //Initializing a state - object w key value pairs that tracks changes in a component
+  // DO NOT EVER DIRECTLY MANIPULATE THE STATE
+  state = {
+    temperature: undefined,
+    city: undefined,
+    country: undefined,
+    humidity: undefined,
+    description: undefined,
+    error: undefined
+
+  }
   // Create your own method - Get Weather
   // arrow functions allow you to use 'this' key word independently (its bound to this component)
   // e is an event object
@@ -29,6 +40,16 @@ class App extends Component {
     //need to convert response to JSON format
     const data = await api_call.json();
     console.log(data);
+    // setState changes the data in the state
+    this.setState({
+      // values found in console log 
+      temperature: data.main.temp,
+      city: data.name,
+      country: data.sys.country,
+      humidity: data.main.humidity,
+      description: data.weather[0].description,
+      error: ''
+    });
     }
   // Render - built in method that returns JSX - JS running in background transpiled by Babel
   render() {
