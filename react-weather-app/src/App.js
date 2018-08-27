@@ -39,6 +39,8 @@ class App extends Component {
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_key}a&units=metric`);
     //need to convert response to JSON format
     const data = await api_call.json();
+    // makes a check to see if city and country are both defined, then run the app code
+    if (city && country) {
     console.log(data);
     // setState changes the data in the state
     this.setState({
@@ -48,8 +50,19 @@ class App extends Component {
       country: data.sys.country,
       humidity: data.main.humidity,
       description: data.weather[0].description,
-      error: ''
+      error: ""
     });
+  } else {
+    this.setState ({
+      temperature: undefined,
+      city: undefined,
+      country: undefined,
+      humidity: undefined,
+      description: undefined,
+      error: ""
+    })
+
+  }
   }
   // Render - built in method that returns JSX - JS running in background transpiled by Babel
   render() {
