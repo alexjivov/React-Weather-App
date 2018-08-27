@@ -21,8 +21,11 @@ class App extends Component {
   getWeather = async (e) => {
     //prevents full page refresh on click of submit button
     e.preventDefault();
+    //targeting the specific inputs of city and country being put in - so its not always 'Manchester'
+    const city = e.target.elements.city.value;
+    const country = e.target.elements.country.value;
     // fetch keyword + URL you want to make API call to
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=Manchester,uk&appid=${API_key}a&units=metric`);
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_key}a&units=metric`);
     //need to convert response to JSON format
     const data = await api_call.json();
     console.log(data);
