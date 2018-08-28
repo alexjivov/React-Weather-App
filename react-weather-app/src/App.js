@@ -11,7 +11,7 @@ import Form from './Components/form';
 import Weather from './Components/weather';
 
 // WEATHER API KEY //
-const API_key = 'f8f573c91bdd7dddc94206da5aa3a3c1';
+const API_key = '166a433c57516f51dfab1f7edaed8413';
 
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
     // fetch keyword + URL you want to make API call to
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_key}a&units=metric`);
+    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_key}&units=metric`);
     //need to convert response to JSON format
     const data = await api_call.json();
     // makes a check to see if city and country are both defined, then run the app code
