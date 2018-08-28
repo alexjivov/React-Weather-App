@@ -41,48 +41,63 @@ class App extends Component {
     const data = await api_call.json();
     // makes a check to see if city and country are both defined, then run the app code
     if (city && country) {
-    console.log(data);
-    // setState changes the data in the state
-    this.setState({
-      // values found in console log 
-      temperature: data.main.temp,
-      city: data.name,
-      country: data.sys.country,
-      humidity: data.main.humidity,
-      description: data.weather[0].description,
-      error: ""
-    });
-  } else {
-    this.setState ({
-      temperature: undefined,
-      city: undefined,
-      country: undefined,
-      humidity: undefined,
-      description: undefined,
-      error: ""
-    })
+      console.log(data);
+      // setState changes the data in the state
+      this.setState({
+        // values found in console log 
+        temperature: data.main.temp,
+        city: data.name,
+        country: data.sys.country,
+        humidity: data.main.humidity,
+        description: data.weather[0].description,
+        error: ""
+      });
+    } else {
+      this.setState({
+        temperature: undefined,
+        city: undefined,
+        country: undefined,
+        humidity: undefined,
+        description: undefined,
+        error: ""
+      })
 
-  }
+    }
   }
   // Render - built in method that returns JSX - JS running in background transpiled by Babel
   render() {
     return (
       <div>
-        <Titles />
-        <Form getWeather={this.getWeather} />
-        <Weather 
-        // doesn't show anything if state values are 'undefined'
-        temperature={this.state.temperature}
-        city={this.state.city}
-        country={this.state.country}
-        humidity={this.state.humidity}
-        description={this.state.description}
-        error={this.state.error}
+        <div className="wrapper">
+          <div className="main">
+            <div className="container">
+              <div className="row">
+                <div className="col-sx-5 title-container">
+                  <Titles />
+                </div>
+                <div className="col-sx-7 form-container">
+                  <Form getWeather={this.getWeather} />
+                  <Weather
+                    // doesn't show anything if state values are 'undefined'
+                    temperature={this.state.temperature}
+                    city={this.state.city}
+                    country={this.state.country}
+                    humidity={this.state.humidity}
+                    description={this.state.description}
+                    error={this.state.error}
 
-        />
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
+
+
+
 
 export default App;
