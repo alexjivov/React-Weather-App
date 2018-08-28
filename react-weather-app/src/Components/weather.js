@@ -5,7 +5,7 @@ class Weather extends Component {
     // Render - built in method that returns JSX - JS running in background transpiled by Babel
     render() {
       return (
-       <div>
+       <div class="weather">
         { this.props.city && this.props.country && <p> Location: {this.props.city }, {this.props.country } </p> }
         {this.props.temperature && <p>Temperature: {this.props.temperature }</p>} 
         {this.props.humidity && <p> Humidity: {this.props.humidity }</p> }
