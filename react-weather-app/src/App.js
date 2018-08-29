@@ -72,10 +72,10 @@ class App extends Component {
           <div className="main">
             <div className="container">
               <div className="row">
-                <div className="col-sx-5 title-container">
+                <div className="col-xs-7 tcol-sm-7 col-md-7 col-lg-7 title-container">
                   <Titles />
                 </div>
-                <div className="col-sx-7 form-container">
+                <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5 form-container">
                   <Form getWeather={this.getWeather} />
                   <Weather
                     // doesn't show anything if state values are 'undefined'
